@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'AvenirNext LT Pro Regular';
+  src: url('AvenirNextLTPro-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  font-family: 'AvenirNext LT Pro Regular', sans-serif;
+    height: 100vh;
+}
+
+/* Position and style citation */
+#cite {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
+}
+
+/* If not using map tiles, show a white background */
+.leaflet-container {
+  background-color: transparent !important;
+	    height: 100%;
+  	    padding: 0 0 0 0;
+}
+
+/* change color of sidepanel text background */
+         #textpanel {
+            background-color: transparent !important;
+            height:100vh;
+            overflow-y:scroll;
+        }
+
+/* change color of selectpanel text background */
+         #selectpanel {
+         background-color: transparent !important;
+        }
+
+/* remove map background */
+         #mainpanel {
+	    height: 50vh;
+  	    padding: 0 0 0 0;
+            background-color: transparent;
+        }

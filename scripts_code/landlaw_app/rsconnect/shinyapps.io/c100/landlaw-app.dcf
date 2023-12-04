@@ -1,0 +1,12 @@
+name: landlaw-app
+title: landlaw-app
+username:
+account: c100
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9333754
+bundleId: 7991370
+url: https://c100.shinyapps.io/landlaw-app/
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: d_bills.rdata|Glossary.docx|landlaw_app_prep.R|map_states.R|map_states.rdata|statecodes.csv|archive|ne_10m_admin_1_states_provinces_lakes

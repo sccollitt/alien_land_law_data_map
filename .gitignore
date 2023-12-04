@@ -1,0 +1,11 @@
+# R specific
+.Rhistory
+.Rproj.user
+.Ruserdata
+.Renviron
+
+# Logs
+*.log
+
+# API key
+legiscan_api/legiscan_api_key.txt
