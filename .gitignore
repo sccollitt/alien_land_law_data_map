@@ -8,4 +8,4 @@
 *.log
 
 # API key
-legiscan_api/legiscan_api_key.txt
+scripts_code/legiscan_api/legiscan_api_key.txt
