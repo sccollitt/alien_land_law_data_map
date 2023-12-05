@@ -20,36 +20,32 @@ ui <- fluidPage(
         ),
         tabsetPanel(id = "tabsetPanel",
                     tabPanel("All bills",
+                             wellPanel(id = "selectpanel",
                              fluidRow(
                                      column(
-                                             width = 8,
-                                             wellPanel(
-                                                     id = "mainpanel",
-                                                     tags$style(type = "text/css", "#mymap_all {height: calc(50vh) !important;}"),
-                                                     leafletOutput("mymap_all")
-                                             )
-                                     ),
-                                     column(
-                                             width = 4,
+                                             width = 12,
                                              h4("Select bill provisions:"),
-                                             wellPanel(id = "selectpanel",
+                                                     fluidRow(
+                                                             column(
+                                                                     width = 6,
                                                        selectInput(
                                                                "prohibited_entities_all",
                                                                "Entities prohibited from owning property",
                                                                choices = c(
                                                                        "At least one category" = "any_entity",
+                                                                       "Foreign governments, entities, and individuals" = "Foreign_Govts_Entities_Individuals",
+                                                                       "Foreign adversaries" = "Foreign_Adversaries_Including_PRC",
                                                                        "PRC citizens" = "PRC_citizen",
                                                                        "Permanent U.S. residents" = "Resident_status",
                                                                        "PRC companies and organizations" = "PRC_Companies_Orgs_Entities",
                                                                        "PRC government and entities" = "PRC_Govt_Entities",
                                                                        "CCP members and companies" = "CCP_Members_Companies",
-                                                                       "Foreign governments, entities, and individuals" = "Foreign_Govts_Entities_Individuals",
-                                                                       "Foreign adversaries" = "Foreign_Adversaries_Including_PRC",
                                                                        "Existing owners must sell property" = "Existing_Owners_Must_Sell_Property"
                                                                ),
                                                                selected = "any_entity",
                                                                multiple = TRUE
-                                                       ),
+                                                       )),
+                                             column(width = 6,
                                                        selectInput(
                                                                "prohibited_land_types_all",
                                                                "Properties prohibited from ownership",
@@ -66,7 +62,16 @@ ui <- fluidPage(
                                                                ),
                                                                selected = "any_land",
                                                                multiple = TRUE
-                                                       )
+                                                       )))
+                                             )
+                             ),
+                             fluidRow(
+                                     column(
+                                             width = 12,
+                                             wellPanel(
+                                                     id = "mainpanel",
+                                                     tags$style(type = "text/css", "#mymap_all {height: calc(600px) !important;}"),
+                                                     leafletOutput("mymap_all")
                                              )
                                      )
                              ),
@@ -77,129 +82,133 @@ ui <- fluidPage(
                                              wellPanel(id = "textpanel", htmlOutput("feat_selected_all"))
                                      )
                              )
-                    ),
+                    )),
                     tabPanel("Passed bills",
-                             fluidRow(
-                                     column(
-                                             width = 8,
-                                             wellPanel(
-                                                     id = "mainpanel",
-                                                     tags$style(type = "text/css", "#mymap_passed {height: calc(50vh) !important;}"),
-                                                     leafletOutput("mymap_passed")
-                                             )
-                                     ),
-                                     column(
-                                             width = 4,
-                                             h4("Select bill provisions:"),
-                                             wellPanel(id = "selectpanel",
-                                                       selectInput(
-                                                               "prohibited_entities_passed",
-                                                               "Entities prohibited from owning property",
-                                                               choices = c(
-                                                                       "At least one category" = "any_entity",
-                                                                       "PRC citizens" = "PRC_citizen",
-                                                                       "Permanent U.S. residents" = "Resident_status",
-                                                                       "PRC companies and organizations" = "PRC_Companies_Orgs_Entities",
-                                                                       "PRC government and entities" = "PRC_Govt_Entities",
-                                                                       "CCP members and companies" = "CCP_Members_Companies",
-                                                                       "Foreign governments, entities, and individuals" = "Foreign_Govts_Entities_Individuals",
-                                                                       "Foreign adversaries" = "Foreign_Adversaries_Including_PRC",
-                                                                       "Existing owners must sell property" = "Existing_Owners_Must_Sell_Property"
-                                                                       
-                                                               ),
-                                                               selected = "any_entity",
-                                                               multiple = TRUE
-                                                       ),
-                                                       selectInput(
-                                                               "prohibited_land_types_passed",
-                                                               "Properties prohibited from ownership",
-                                                               choices = c(
-                                                                       "At least one category" = "any_land",
-                                                                       "All property" = "All_types",
-                                                                       "Residential" = "Residential",
-                                                                       "Commercial or not for personal residence" = "Commercial_or_Not_for_Personal_Use",
-                                                                       "Agricultural or natural resources" = "Agricultural_Natural_Resource",
-                                                                       "State land" = "State_Land",
-                                                                       "Near federal land or critical infrastructure" = "Near_Federal_Land_Critical_Infrastructure",
-                                                                       "Near military facilities" = "Near_Military_Facilities",
-                                                                       "Of a certain size" = "Of_a_Certain_Size"
-                                                               ),
-                                                               selected = "any_land",
-                                                               multiple = TRUE
+                             wellPanel(id = "selectpanel",
+                                       fluidRow(
+                                               column(
+                                                       width = 12,
+                                                       h4("Select bill provisions:"),
+                                                       fluidRow(
+                                                               column(
+                                                                       width = 6,
+                                                                       selectInput(
+                                                                               "prohibited_entities_passed",
+                                                                               "Entities prohibited from owning property",
+                                                                               choices = c(
+                                                                                       "At least one category" = "any_entity",
+                                                                                       "Foreign governments, entities, and individuals" = "Foreign_Govts_Entities_Individuals",
+                                                                                       "Foreign adversaries" = "Foreign_Adversaries_Including_PRC",
+                                                                                       "PRC citizens" = "PRC_citizen",
+                                                                                       "Permanent U.S. residents" = "Resident_status",
+                                                                                       "PRC companies and organizations" = "PRC_Companies_Orgs_Entities",
+                                                                                       "PRC government and entities" = "PRC_Govt_Entities",
+                                                                                       "CCP members and companies" = "CCP_Members_Companies",
+                                                                                       "Existing owners must sell property" = "Existing_Owners_Must_Sell_Property"
+                                                                               ),
+                                                                               selected = "any_entity",
+                                                                               multiple = TRUE
+                                                                       )),
+                                                               column(width = 6,
+                                                                      selectInput(
+                                                                              "prohibited_land_types_passed",
+                                                                              "Properties prohibited from ownership",
+                                                                              choices = c(
+                                                                                      "At least one category" = "any_land",
+                                                                                      "All property" = "All_types",
+                                                                                      "Residential" = "Residential",
+                                                                                      "Commercial or not for personal residence" = "Commercial_or_Not_for_Personal_Use",
+                                                                                      "Agricultural or natural resources" = "Agricultural_Natural_Resource",
+                                                                                      "State land" = "State_Land",
+                                                                                      "Near federal land or critical infrastructure" = "Near_Federal_Land_Critical_Infrastructure",
+                                                                                      "Near military facilities" = "Near_Military_Facilities",
+                                                                                      "Of a certain size" = "Of_a_Certain_Size"
+                                                                              ),
+                                                                              selected = "any_land",
+                                                                              multiple = TRUE
+                                                                      )))
+                                               )
+                                       ),
+                                       fluidRow(
+                                               column(
+                                                       width = 12,
+                                                       wellPanel(
+                                                               id = "mainpanel",
+                                                               tags$style(type = "text/css", "#mymap_passed {height: calc(600px) !important;}"),
+                                                               leafletOutput("mymap_passed")
                                                        )
-                                             )
-                                     )
-                             ),
-                             fluidRow(
-                                     column(
-                                             width = 12,
-                                             h4("State bills summary"),
-                                             wellPanel(id = "textpanel", htmlOutput("feat_selected_passed"))
-                                     )
-                             )
-                    ),
+                                               )
+                                       ),
+                                       fluidRow(
+                                               column(
+                                                       width = 12,
+                                                       h4("Summary of bills"),
+                                                       wellPanel(id = "textpanel", htmlOutput("feat_selected_passed"))
+                                               )
+                                       )
+                             )),
                     tabPanel("Bills under consideration",
-                             fluidRow(
-                                     column(
-                                             width = 8,
-                                             wellPanel(
-                                                     id = "mainpanel",
-                                                     tags$style(type = "text/css", "#mymap_considering {height: calc(50vh) !important;}"),
-                                                     leafletOutput("mymap_considering")
-                                             )
-                                     ),
-                                     column(
-                                             width = 4,
-                                             h4("Select bill provisions:"),
-                                             wellPanel(id = "selectpanel",
-                                                       selectInput(
-                                                               "prohibited_entities_considering",
-                                                               "Entities prohibited from owning property",
-                                                               choices = c(
-                                                                       "At least one category" = "any_entity",
-                                                                       "PRC citizens" = "PRC_citizen",
-                                                                       "Permanent U.S. residents" = "Resident_status",
-                                                                       "PRC companies and organizations" = "PRC_Companies_Orgs_Entities",
-                                                                       "PRC government and entities" = "PRC_Govt_Entities",
-                                                                       "CCP members and companies" = "CCP_Members_Companies",
-                                                                       "Foreign governments, entities, and individuals" = "Foreign_Govts_Entities_Individuals",
-                                                                       "Foreign adversaries" = "Foreign_Adversaries_Including_PRC",
-                                                                       "Existing owners must sell property" = "Existing_Owners_Must_Sell_Property"
-                                                                       
-                                                               ),
-                                                               selected = "any_entity",
-                                                               multiple = TRUE
-                                                       ),
-                                                       selectInput(
-                                                               "prohibited_land_types_considering",
-                                                               "Properties prohibited from ownership",
-                                                               choices = c(
-                                                                       "At least one category" = "any_land",
-                                                                       "All property" = "All_types",
-                                                                       "Residential" = "Residential",
-                                                                       "Commercial or not for personal residence" = "Commercial_or_Not_for_Personal_Use",
-                                                                       "Agricultural or natural resources" = "Agricultural_Natural_Resource",
-                                                                       "State land" = "State_Land",
-                                                                       "Near federal land or critical infrastructure" = "Near_Federal_Land_Critical_Infrastructure",
-                                                                       "Near military facilities" = "Near_Military_Facilities",
-                                                                       "Of a certain size" = "Of_a_Certain_Size"
-                                                               ),
-                                                               selected = "any_land",
-                                                               multiple = TRUE
+                             wellPanel(id = "selectpanel",
+                                       fluidRow(
+                                               column(
+                                                       width = 12,
+                                                       h4("Select bill provisions:"),
+                                                       fluidRow(
+                                                               column(
+                                                                       width = 6,
+                                                                       selectInput(
+                                                                               "prohibited_entities_considering",
+                                                                               "Entities prohibited from owning property",
+                                                                               choices = c(
+                                                                                       "At least one category" = "any_entity",
+                                                                                       "Foreign governments, entities, and individuals" = "Foreign_Govts_Entities_Individuals",
+                                                                                       "Foreign adversaries" = "Foreign_Adversaries_Including_PRC",
+                                                                                       "PRC citizens" = "PRC_citizen",
+                                                                                       "Permanent U.S. residents" = "Resident_status",
+                                                                                       "PRC companies and organizations" = "PRC_Companies_Orgs_Entities",
+                                                                                       "PRC government and entities" = "PRC_Govt_Entities",
+                                                                                       "CCP members and companies" = "CCP_Members_Companies",
+                                                                                       "Existing owners must sell property" = "Existing_Owners_Must_Sell_Property"
+                                                                               ),
+                                                                               selected = "any_entity",
+                                                                               multiple = TRUE
+                                                                       )),
+                                                               column(width = 6,
+                                                                      selectInput(
+                                                                              "prohibited_land_types_considering",
+                                                                              "Properties prohibited from ownership",
+                                                                              choices = c(
+                                                                                      "At least one category" = "any_land",
+                                                                                      "All property" = "All_types",
+                                                                                      "Residential" = "Residential",
+                                                                                      "Commercial or not for personal residence" = "Commercial_or_Not_for_Personal_Use",
+                                                                                      "Agricultural or natural resources" = "Agricultural_Natural_Resource",
+                                                                                      "State land" = "State_Land",
+                                                                                      "Near federal land or critical infrastructure" = "Near_Federal_Land_Critical_Infrastructure",
+                                                                                      "Near military facilities" = "Near_Military_Facilities",
+                                                                                      "Of a certain size" = "Of_a_Certain_Size"
+                                                                              ),
+                                                                              selected = "any_land",
+                                                                              multiple = TRUE
+                                                                      )))
+                                               )
+                                       ),
+                                       fluidRow(
+                                               column(
+                                                       width = 12,
+                                                       wellPanel(
+                                                               id = "mainpanel",
+                                                               tags$style(type = "text/css", "#mymap_considering {height: calc(600px) !important;}"),
+                                                               leafletOutput("mymap_considering")
                                                        )
-                                             )
-                                     )
-                             ),
-                             fluidRow(
-                                     column(
-                                             width = 12,
-                                             h4("State bills summary"),
-                                             wellPanel(id = "textpanel", htmlOutput("feat_selected_considering"))
-                                     )
-                             )
-                    ),
-        )
-)
+                                               )
+                                       ),
+                                       fluidRow(
+                                               column(
+                                                       width = 12,
+                                                       h4("Summary of bills"),
+                                                       wellPanel(id = "textpanel", htmlOutput("feat_selected_considering"))
+                                               ))))))
 
 
 server <- function(input, output, session) {
@@ -260,7 +269,7 @@ server <- function(input, output, session) {
         output$mymap_all <- renderLeaflet({
                 leaflet_data <- updated_data()
                 
-                leaflet(options = leafletOptions(maxZoom = 7, minZoom = 3.75, zoomControl = TRUE,
+                leaflet(options = leafletOptions(maxZoom = 7, minZoom = 4, zoomControl = TRUE,
                                                  zoomSnap = 0.25, zoomDelta = 0.5)) %>%
                         addPolygons(
                                 layerId = ~ID_1,
@@ -307,7 +316,7 @@ server <- function(input, output, session) {
         output$mymap_passed <- renderLeaflet({
                 leaflet_data <- updated_data()
                 
-                leaflet(options = leafletOptions(maxZoom = 7, minZoom = 3.75, zoomControl = TRUE,
+                leaflet(options = leafletOptions(maxZoom = 7, minZoom = 4, zoomControl = TRUE,
                                                  zoomSnap = 0.25, zoomDelta = 0.5)) %>%
                         addPolygons(
                                 layerId = ~ID_1,
@@ -354,7 +363,7 @@ server <- function(input, output, session) {
         output$mymap_considering <- renderLeaflet({
                 leaflet_data <- updated_data()
                 
-                leaflet(options = leafletOptions(maxZoom = 7, minZoom = 3.75, zoomControl = TRUE,
+                leaflet(options = leafletOptions(maxZoom = 7, minZoom = 4, zoomControl = TRUE,
                                                  zoomSnap = 0.25, zoomDelta = 0.5)) %>%
                         addPolygons(
                                 layerId = ~ID_1,
