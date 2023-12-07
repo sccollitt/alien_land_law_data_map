@@ -6,4 +6,4 @@ The resulting app is an interactive US states map of legislation considered by s
 Bills are coded according to their provisions regarding the entities prohibited from owning property as well as the types of property prohibited from ownership.
 Special attention is given to property ownership prohibited by citizens of the People's Republic of China and related business and government entities.
 
-[Link to the app](https://c100.shinyapps.io/landlaw-app/)
+[Link to the app](https://sccollitt.shinyapps.io/landlaw_app/)

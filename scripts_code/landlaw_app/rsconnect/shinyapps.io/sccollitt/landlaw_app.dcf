@@ -1,0 +1,12 @@
+name: landlaw_app
+title: landlaw_app
+username: sccollitt
+account: sccollitt
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10744962
+bundleId: 8021184
+url: https://sccollitt.shinyapps.io/landlaw_app/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
